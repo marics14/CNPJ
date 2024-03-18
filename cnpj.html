@@ -36,8 +36,8 @@
 <label for="natureza_juridica">Natureza Jurídica:</label>
 <input type="text" id="natureza_juridica" readonly> <br/>
 
-<label for="atividades_economicas">Atividades Econômicas:</label>
-<input type="text" id="atividades_economicas" readonly> <br/>
+<label for="atividade_principal">Atividade Pconômicas:</label>
+<input type="text" id="atividade_principal" readonly> <br/>
 
 <label for="porte">Porte:</label>
 <input type="text" id="porte" readonly> <br/>
@@ -74,10 +74,10 @@
      document.getElementById("complemento").value = dados.complemento;
      document.getElementById("nome").value = dados.nome;
      document.getElementById("email").value = dados.email;
-     document.getElementById("razao_social").value = dados.razao_social;
+     document.getElementById("razao_social").value = dados.nome;
      document.getElementById("data_abertura").value = dados.abertura;
      document.getElementById("natureza_juridica").value = dados.natureza_juridica;
-     document.getElementById("atividades_economicas").value = dados.atividades_economicas;
+     document.getElementById("atividade_principal").value = dados.atividade_principal[0].text;
      document.getElementById("porte").value = dados.porte;
      document.getElementById("logradouro").value = dados.logradouro;
      document.getElementById("municipio").value = dados.municipio;
