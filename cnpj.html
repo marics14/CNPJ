@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de CNPJ</title>
+</head>
+<body>
+
+<h1>Consulta de CNPJ</h1>
+
+<label for="pesquisaCnpj">Digite o CNPJ:</label>
+<input type="text" id="cnpj" name="cnpj" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" placeholder="00.000.000/0000-00" required>
+<button onclick="buscarEnderecoNoViaCNPJ()">Pesquisar</button>
+
+<h2>Específico</h2>
+
+<label for="nome">Nome:</label>
+<input type="text" id="nome" readonly> <br/>
+
+<label for="complemento">Complemento:</label>
+<input type="text" id="complemento" readonly> <br/>
+
+<label for="nome_fantasia">Nome Fantasia:</label>
+<input type="text" id="nome_fantasia" readonly> <br/>
+
+<label for="email">Email:</label>
+<input type="text" id="email" readonly> <br/>
+
+<label for="razao_social">Razão Social:</label>
+<input type="text" id="razao_social" readonly> <br/>
+
+<label for="data_abertura">Data de Abertura :</label>
+<input type="text" id="data_abertura" readonly> <br/>
+
+<label for="natureza_juridica">Natureza Jurídica:</label>
+<input type="text" id="natureza_juridica" readonly> <br/>
+
+<label for="atividades_economicas">Atividades Econômicas:</label>
+<input type="text" id="atividades_economicas" readonly> <br/>
+
+<label for="porte">Porte:</label>
+<input type="text" id="porte" readonly> <br/>
+
+<label for="logradouro">Logradouro:</label>
+<input type="text" id="logradouro" readonly> <br/>
+
+<label for="municipio">Município:</label>
+<input type="text" id="municipio" readonly> <br/>
+
+<label for="bairro">Bairro:</label>
+<input type="text" id="bairro" readonly> <br/>
+
+<label for="numero">Número:</label>
+<input type="text" id="numero" readonly> <br/>
+
+<label for="uf">UF:</label>
+<input type="text" id="uf" readonly> <br/>
+
+<label for="efr">EFR:</label>
+<input type="text" id="efr" readonly> <br/>
+
+<script>
+    function buscarEnderecoNoViaCNPJ() {
+  var cnpj = document.getElementById("cnpj").value.replace(".", "").replace(".", "").replace("/", "").replace("-", "");
+//   alert(cnpj)
+  fetch("https://cors-anywhere.herokuapp.com/https://receitaws.com.br/v1/cnpj/" + cnpj).then((response) => {
+     if(response.ok) {
+         return response.json();
+     }
+  }).then((dados) => {
+     console.log(dados)
+     document.getElementById("nome_fantasia").value = dados.fantasia;
+     document.getElementById("complemento").value = dados.complemento;
+     document.getElementById("nome").value = dados.nome;
+     document.getElementById("email").value = dados.email;
+     document.getElementById("razao_social").value = dados.razao_social;
+     document.getElementById("data_abertura").value = dados.abertura;
+     document.getElementById("natureza_juridica").value = dados.natureza_juridica;
+     document.getElementById("atividades_economicas").value = dados.atividades_economicas;
+     document.getElementById("porte").value = dados.porte;
+     document.getElementById("logradouro").value = dados.logradouro;
+     document.getElementById("municipio").value = dados.municipio;
+     document.getElementById("bairro").value = dados.bairro;
+     document.getElementById("numero").value = dados.numero;
+     document.getElementById("uf").value = dados.uf;
+     document.getElementById("efr").value = dados.efr;
+
+  })
+ }
+  </script>
+  
+  </body>
+  </html>
+
+
+</html>
+ 
